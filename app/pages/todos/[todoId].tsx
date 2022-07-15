@@ -16,27 +16,33 @@ export const Todo = () => {
         <title>Todo {todo.id}</title>
       </Head>
 
-      <div>
-        <h1>Name: {todo.name}</h1>
-        <span>Id: {todo.id}</span>
+      <div className="container">
+        <h1>Title: {todo.name}</h1>
+        <p>Id: {todo.id}</p>
+        <p>Completed: {todo.completed ? "✅" : "❌"}</p>
+
+        <br />
         <pre>{JSON.stringify(todo, null, 2)}</pre>
 
-        <Link href={Routes.EditTodoPage({ todoId: todo.id })}>
-          <a>Edit</a>
-        </Link>
+        <div className="buttons">
+          <Link href={Routes.EditTodoPage({ todoId: todo.id })}>
+            <a className="button small">Edit</a>
+          </Link>
 
-        <button
-          type="button"
-          onClick={async () => {
-            if (window.confirm("This will be deleted")) {
-              await deleteTodoMutation({ id: todo.id })
-              router.push(Routes.Home())
-            }
-          }}
-          style={{ marginLeft: "0.5rem" }}
-        >
-          Delete
-        </button>
+          <button
+            className="button small"
+            type="button"
+            onClick={async () => {
+              if (window.confirm("This will be deleted")) {
+                await deleteTodoMutation({ id: todo.id })
+                router.push(Routes.Home())
+              }
+            }}
+            style={{ marginLeft: "0.5rem" }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   )
@@ -47,7 +53,7 @@ const ShowTodoPage: BlitzPage = () => {
     <div>
       <p>
         <Link href={Routes.Home()}>
-          <a>Todos</a>
+          <a>Back to Home</a>
         </Link>
       </p>
 

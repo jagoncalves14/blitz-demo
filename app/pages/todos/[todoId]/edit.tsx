@@ -63,9 +63,9 @@ const EditTodoPage: BlitzPage = () => {
         <EditTodo />
       </Suspense>
 
-      <p>
+      <p style={{ marginTop: "100px" }}>
         <Link href={Routes.Home()}>
-          <a>Todos</a>
+          <a>Back to Home</a>
         </Link>
       </p>
     </div>

@@ -8,7 +8,7 @@ const NewTodoPage: BlitzPage = () => {
   const [createTodoMutation] = useMutation(createTodo)
 
   return (
-    <div>
+    <div className="container">
       <h1>Create New Todo</h1>
 
       <TodoForm
@@ -23,17 +23,17 @@ const NewTodoPage: BlitzPage = () => {
             const todo = await createTodoMutation(values)
             router.push(Routes.ShowTodoPage({ todoId: todo.id }))
           } catch (error: any) {
-            console.error(error)
+            const fielsWithError = JSON.parse(error.message)[0].path
             return {
-              [FORM_ERROR]: error.toString(),
+              [FORM_ERROR]: `Invalid field: ${fielsWithError.join(", ")}`,
             }
           }
         }}
       />
 
-      <p>
+      <p style={{ marginTop: "100px" }}>
         <Link href={Routes.Home()}>
-          <a>Todos</a>
+          <a>Back to Home</a>
         </Link>
       </p>
     </div>

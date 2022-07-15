@@ -49,7 +49,7 @@ const TodosPage: BlitzPage = () => {
       <div>
         <p>
           <Link href={Routes.NewTodoPage()}>
-            <a>Create Todo</a>
+            <a className="button small">Create Todo</a>
           </Link>
         </p>
 
